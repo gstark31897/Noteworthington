@@ -1,0 +1,43 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Noteworthington{% endblock %}
+
+{% block navbar %}
+  {{ nav.navbar.render() }}
+{% endblock %}
+
+{% block content %}
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Noteworthington</h1>
+      <p>
+        A system for storing, editing, and syncing notes between devices
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Tech</h2>
+        <p>
+          Noteworthington is being developed with python flask and mongodb
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <h2>Github</h2>
+        <p>
+          View the code on github:
+          <a class+"btn btn-primary" href="https://github.com/gstark31897/Noteworthington" role="button">Github</a>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <h2>Future</h2>
+        <p>
+          Currently only the web api and interface are being activly developed, but an android and qt desktop application are planned
+        </p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
