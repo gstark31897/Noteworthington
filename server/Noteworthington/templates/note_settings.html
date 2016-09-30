@@ -1,6 +1,6 @@
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% block title %}Login{% endblock %}
+{% block title %}Settings{% endblock %}
 
 {% block navbar %}
   {{ nav.navbar.render() }}
@@ -9,7 +9,7 @@
 {% block content %}
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-3">Login</h1>
+      <h1 class="display-3">Settings</h1>
     </div>
   </div>
 
@@ -17,6 +17,8 @@
     <div class="row row-centered">
       <div class="col-md-8 col-md-offset-2">
         {{ wtf.quick_form(form) }}
+        <button type="button" class="btn btn-default inline" onclick="window.location = '/notes/{{ note.id }}/delete'">Delete</button>
+        <button type="button" class="btn btn-default inline" onclick="window.location = '/notes/{{ note.id }}'">Cancel</button>
       </div>
     </div>
   </div>

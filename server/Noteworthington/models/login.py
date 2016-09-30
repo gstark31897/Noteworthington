@@ -69,3 +69,4 @@ def load_user(username):
     if not u:
         return None
     return User(username)
+

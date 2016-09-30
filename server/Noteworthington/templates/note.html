@@ -1,0 +1,57 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Notes{% endblock %}
+
+{% block navbar %}
+  {{ nav.navbar.render() }}
+{% endblock %}
+
+{% block content %}
+  <script>
+    function getText() {
+        return document.getElementById('editor').value;
+    }
+
+    function submitChanges() {
+	$.ajax({
+	    type: "POST",
+	    url: "{{ note.id }}/update_note",
+	    data: { text: getText() },
+	    success: function(data) {
+	    },
+	    error: function(data) {
+		alert("Unable to save note");
+	    }
+	});
+    }
+    var edited = false;
+    var syncIntervalID = setInterval(function() {
+        if (edited) {
+            submitChanges();
+            edited = false;
+        }
+    }, 10000);
+
+    window.onbeforeunload = function(e) {
+        if (edited) {
+            submitChanges();
+        }
+    }
+  </script>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Notes</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div>
+	<h4 style="display: inline-block;">{{ note.title }}</h4>
+	<button type="button" class="btn btn-default" style="float: right; display: inline-block;" onclick="window.location += '/settings'">Settings</button>
+    </div>
+    <div class="form-group">
+      <textarea rows="50" class="form-control" id="editor" onkeypress="edited=true;">{{ note.text }}</textarea>
+    </div>
+  </div>
+{% endblock %}

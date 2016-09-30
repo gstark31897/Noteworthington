@@ -14,14 +14,12 @@
   </div>
 
   <div class="container">
-    {{ current_user.username }}
     <div class="row">
       {% for note in notes %}
-        <!-- TODO make flask load bootstrap 4 or make a custom card -->
         <div class="col-md-4">
-          <div class="card card-block">
-            <h4 class="card-title">{{ note.title }}</h2>
-            <p class="card-text">{{ note.preview }}</p>
+          <div class="panel panel-default" onclick="window.location +='/{{ note.id }}'">
+            <div class="panel-heading">{{ note.title }}</div>
+            <div class="panel-body">{{ note.text }}</div>
           </div>
         </div>
       {% endfor %}
